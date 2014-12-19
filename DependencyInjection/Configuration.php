@@ -20,9 +20,20 @@ class Configuration implements ConfigurationInterface
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('valiton_shariff');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+            ->children()
+                ->scalarNode('domain')->isRequired()->end()
+                ->arrayNode('cache')
+                    ->children()
+                        ->scalarNode('cacheDir')->defaultNull()->end()
+                        ->scalarNode('ttl')->defaultValue(1800)->end()
+                    ->end()
+                ->end()
+                ->arrayNode('services')
+                    ->prototype('scalar')
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }

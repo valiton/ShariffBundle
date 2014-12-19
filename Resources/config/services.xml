@@ -4,17 +4,28 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
-    <!--
     <parameters>
-        <parameter key="valiton_shariff.example.class">Valiton\Bundle\ShariffBundle\Example</parameter>
+        <parameter key="valiton_shariff.shariff_config.class">Valiton\Bundle\ShariffBundle\ShariffConfig</parameter>
+        <parameter key="valiton_shariff.shariff_service.class">Valiton\Bundle\ShariffBundle\Service\ShariffService</parameter>
+        <parameter key="valiton_shariff.shariff_controller.class">Valiton\Bundle\ShariffBundle\Controller\ShariffController</parameter>
     </parameters>
 
     <services>
-        <service id="valiton_shariff.example" class="%valiton_shariff.example.class%">
-            <argument type="service" id="service_id" />
-            <argument>plain_value</argument>
-            <argument>%parameter_name%</argument>
+        <service id="valiton_shariff.shariff_config" class="%valiton_shariff.shariff_config.class%">
+            <argument>%valiton_shariff.shariff_config.domain%</argument>
+            <argument>%valiton_shariff.shariff_config.services%</argument>
+            <argument>%valiton_shariff.shariff_config.cache%</argument>
         </service>
+
+        <service id="valiton_shariff.shariff_service" class="%valiton_shariff.shariff_service.class%">
+            <argument type="service" id="valiton_shariff.shariff_config"/>
+        </service>
+
+        <service id="valiton_shariff.shariff_controller" class="%valiton_shariff.shariff_controller.class%">
+            <argument type="service" id="valiton_shariff.shariff_service"/>
+            <argument type="service" id="fos_rest.view_handler"/>
+        </service>
+
     </services>
-    -->
+
 </container>
