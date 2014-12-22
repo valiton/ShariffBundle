@@ -8,6 +8,7 @@
         <parameter key="valiton_shariff.shariff_config.class">Valiton\Bundle\ShariffBundle\ShariffConfig</parameter>
         <parameter key="valiton_shariff.shariff_service.class">Valiton\Bundle\ShariffBundle\Service\ShariffService</parameter>
         <parameter key="valiton_shariff.shariff_controller.class">Valiton\Bundle\ShariffBundle\Controller\ShariffController</parameter>
+        <parameter key="valiton_shariff.shariff_extension.class">Valiton\Bundle\ShariffBundle\Twig\ShariffExtension</parameter>
     </parameters>
 
     <services>
@@ -24,6 +25,11 @@
         <service id="valiton_shariff.shariff_controller" class="%valiton_shariff.shariff_controller.class%">
             <argument type="service" id="valiton_shariff.shariff_service"/>
             <argument type="service" id="fos_rest.view_handler"/>
+        </service>
+
+        <service id="valiton_shariff.shariff_extension" class="%valiton_shariff.shariff_extension.class%">
+            <tag name="twig.extension" />
+            <argument type="service" id="valiton_shariff.shariff_config" />
         </service>
 
     </services>
