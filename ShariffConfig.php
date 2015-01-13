@@ -103,7 +103,7 @@ class ShariffConfig
         $result['services'] = $this->services;
         $result['cache'] = array('ttl' => $this->cacheTtl);
         if (null !== $this->cacheDir) {
-            $result['cache']['cahceDir'] = $this->cacheDir;
+            $result['cache']['cacheDir'] = $this->cacheDir;
         }
         return $result;
     }
