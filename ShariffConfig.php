@@ -23,12 +23,21 @@ class ShariffConfig
     /** @var array */
     protected $services;
 
+    /** @var array */
+    protected $serviceConfig;
+
     public function __construct($domain, $services, $cache)
     {
         $this->domain = $domain;
-        $this->services = $services;
+        $this->services = array_keys($services);
         $this->cacheTtl = $cache['ttl'];
         $this->cacheDir = isset($cache['cacheDir']) ? $cache['cacheDir'] : null;
+
+        foreach($services as $name => $serviceConfig) {
+            if (null !== $serviceConfig) {
+                $this->serviceConfig[$name] = $serviceConfig;
+            }
+        }
     }
 
 
@@ -101,6 +110,7 @@ class ShariffConfig
         $result = array();
         $result['domain'] = $this->domain;
         $result['services'] = $this->services;
+        $result = array_merge($result, $this->serviceConfig);
         $result['cache'] = array('ttl' => $this->cacheTtl);
         if (null !== $this->cacheDir) {
             $result['cache']['cacheDir'] = $this->cacheDir;

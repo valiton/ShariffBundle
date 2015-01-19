@@ -30,7 +30,12 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end()
                 ->arrayNode('services')
-                    ->prototype('scalar')
+                    ->useAttributeAsKey('name')
+                    ->prototype('variable')
+                    ->validate()
+                        ->ifTrue(function($v) { return !is_array($v) && !is_null($v); })
+                        ->thenInvalid('The services config %s must be either null or an array.')
+                    ->end()
                 ->end()
             ->end()
         ;
