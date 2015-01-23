@@ -9,6 +9,7 @@
 namespace Valiton\Bundle\ShariffBundle\Service;
 
 
+use Guzzle\Common\Exception\GuzzleException;
 use Heise\Shariff\Backend;
 use Valiton\Bundle\ShariffBundle\ShariffConfig;
 
@@ -31,7 +32,11 @@ class ShariffService implements ShariffServiceInterface
     public function get($url)
     {
         $backend = new Backend($this->config->toArray());
-        return $backend->get($url);
+        try {
+            return $backend->get($url);
+        } catch (GuzzleException $e) {
+            return '{}';
+        }
     }
 
 }
