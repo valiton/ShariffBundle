@@ -32,7 +32,10 @@ class ShariffConfig
     /** @var array */
     protected $adapterOptions;
 
-    public function __construct($domain, $services, $cache)
+    /** @var array */
+    protected $client;
+
+    public function __construct($domain, $services, $cache, $client)
     {
         $this->domain = $domain;
         $this->services = array_keys($services);
@@ -46,6 +49,7 @@ class ShariffConfig
                 $this->serviceConfig[$name] = $serviceConfig;
             }
         }
+        $this->client = $client;
     }
 
 
@@ -160,6 +164,10 @@ class ShariffConfig
         }
         if (null !== $this->adapterOptions) {
             $result['cache']['adapterOptions'] = $this->adapterOptions;
+        }
+
+        if (null !== $this->client && count($this->client)) {
+            $result['client'] = $this->client;
         }
 
         return $result;
