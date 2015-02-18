@@ -24,7 +24,13 @@ class ShariffConfig
     protected $services;
 
     /** @var array */
-    protected $serviceConfig;
+    protected $serviceConfig = array();
+
+    /** @var string */
+    protected $adapter;
+
+    /** @var array */
+    protected $adapterOptions;
 
     public function __construct($domain, $services, $cache)
     {
@@ -32,6 +38,8 @@ class ShariffConfig
         $this->services = array_keys($services);
         $this->cacheTtl = $cache['ttl'];
         $this->cacheDir = isset($cache['cacheDir']) ? $cache['cacheDir'] : null;
+        $this->adapter = isset($cache['adapter']) ? $cache['adapter'] : null;
+        $this->adapterOptions = isset($cache['adapterOptions']) ? $cache['adapterOptions'] : null;
 
         foreach($services as $name => $serviceConfig) {
             if (null !== $serviceConfig) {
@@ -105,6 +113,38 @@ class ShariffConfig
         return $this->services;
     }
 
+    /**
+     * @param string $adapter
+     */
+    public function setAdapter($adapter)
+    {
+        $this->adapter = $adapter;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAdapter()
+    {
+        return $this->adapter;
+    }
+
+    /**
+     * @param array $adapterOptions
+     */
+    public function setAdapterOptions($adapterOptions)
+    {
+        $this->adapterOptions = $adapterOptions;
+    }
+
+    /**
+     * @return array
+     */
+    public function getAdapterOptions()
+    {
+        return $this->adapterOptions;
+    }
+
     public function toArray()
     {
         $result = array();
@@ -115,6 +155,13 @@ class ShariffConfig
         if (null !== $this->cacheDir) {
             $result['cache']['cacheDir'] = $this->cacheDir;
         }
+        if (null !== $this->adapter) {
+            $result['cache']['adapter'] = $this->adapter;
+        }
+        if (null !== $this->adapterOptions) {
+            $result['cache']['adapterOptions'] = $this->adapterOptions;
+        }
+
         return $result;
     }
 }
