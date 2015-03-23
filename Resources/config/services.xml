@@ -16,6 +16,7 @@
             <argument>%valiton_shariff.shariff_config.domain%</argument>
             <argument>%valiton_shariff.shariff_config.services%</argument>
             <argument>%valiton_shariff.shariff_config.cache%</argument>
+            <argument>%valiton_shariff.shariff_config.client%</argument>
         </service>
 
         <service id="valiton_shariff.shariff_service" class="%valiton_shariff.shariff_service.class%">

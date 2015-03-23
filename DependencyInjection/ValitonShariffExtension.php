@@ -25,6 +25,7 @@ class ValitonShariffExtension extends Extension
         $container->setParameter('valiton_shariff.shariff_config.domain', $config['domain']);
         $container->setParameter('valiton_shariff.shariff_config.cache', $config['cache']);
         $container->setParameter('valiton_shariff.shariff_config.services', $config['services']);
+        $container->setParameter('valiton_shariff.shariff_config.client', $config['client']);
 
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
