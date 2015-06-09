@@ -13,6 +13,14 @@ composer require valiton/shariff-bundle
 
 and activate the bundle in your kernel.
 
+Add the following to your app/config/routing.yml:
+
+```
+valiton_shariff:
+    resource: "@ValitonShariffBundle/Resources/config/routing.xml"
+    prefix:   /shariff
+```
+
 Configuration
 -------------
 
