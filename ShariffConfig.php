@@ -155,6 +155,11 @@ class ShariffConfig
         $result['domain'] = $this->domain;
         $result['services'] = $this->services;
         $result = array_merge($result, $this->serviceConfig);
+
+        $result['services'] = array_filter($result['services'], function ($v) {
+            return 'Twitter' != $v;
+        });
+
         $result['cache'] = array('ttl' => $this->cacheTtl);
         if (null !== $this->cacheDir) {
             $result['cache']['cacheDir'] = $this->cacheDir;
