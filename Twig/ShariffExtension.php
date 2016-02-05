@@ -11,7 +11,7 @@ namespace Valiton\Bundle\ShariffBundle\Twig;
 
 use Valiton\Bundle\ShariffBundle\ShariffConfig;
 
-class ShariffExtension extends \Twig_Extension
+class ShariffExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
 {
     protected $shariffConfig;
 
