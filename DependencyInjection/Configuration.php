@@ -23,6 +23,7 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('domain')->isRequired()->end()
+                ->scalarNode('force_protocol')->defaultNull()->end()
                 ->arrayNode('cache')
                     ->addDefaultsIfNotSet()
                     ->children()
