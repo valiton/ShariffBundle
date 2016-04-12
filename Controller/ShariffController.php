@@ -38,12 +38,12 @@ class ShariffController
         $url = $request->query->get('url');
         $forceProtocol = $this->config->getForceProtocol();
 
-        if(!is_null($forceProtocol)){
-            if($forceProtocol === "https"){
-                $url = str_replace('http://','https://',$url);
+        if (!is_null($forceProtocol)) {
+            if ($forceProtocol === "https") {
+                $url = str_replace('http://', 'https://', $url);
             }
-            if($forceProtocol === "http"){
-                $url = str_replace('https://','http://',$url);
+            if ($forceProtocol === "http") {
+                $url = str_replace('https://', 'http://', $url);
             }
         }
 
