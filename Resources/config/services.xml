@@ -14,6 +14,7 @@
     <services>
         <service id="valiton_shariff.shariff_config" class="%valiton_shariff.shariff_config.class%">
             <argument>%valiton_shariff.shariff_config.domain%</argument>
+            <argument>%valiton_shariff.shariff_config.force_protocol%</argument>
             <argument>%valiton_shariff.shariff_config.services%</argument>
             <argument>%valiton_shariff.shariff_config.cache%</argument>
             <argument>%valiton_shariff.shariff_config.client%</argument>
@@ -25,6 +26,7 @@
 
         <service id="valiton_shariff.shariff_controller" class="%valiton_shariff.shariff_controller.class%">
             <argument type="service" id="valiton_shariff.shariff_service"/>
+            <argument type="service" id="valiton_shariff.shariff_config"/>
             <argument type="service" id="fos_rest.view_handler"/>
         </service>
 
