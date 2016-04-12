@@ -19,19 +19,35 @@ class ShariffController
     /** @var  ShariffServiceInterface */
     protected $shariffService;
 
+    /** @var ShariffConfig */
+    protected $config;
+
     /** @var  ViewHandlerInterface */
     protected $viewHandler;
 
-    public function __construct(ShariffServiceInterface $shariffService, ViewHandlerInterface $viewHandler)
+    public function __construct(ShariffServiceInterface $shariffService, ShariffConfig $config, ViewHandlerInterface $viewHandler)
     {
         $this->shariffService = $shariffService;
         $this->viewHandler = $viewHandler;
+        $this->config = $config;
     }
 
 
     public function get(Request $request)
     {
-        $result = $this->shariffService->get($request->query->get('url'));
+        $url = $request->query->get('url');
+        $forceProtocol = $this->config->getForceProtocol();
+
+        if(!is_null($forceProtocol)){
+            if($forceProtocol === "https"){
+                $url = str_replace('http://','https://',$url);
+            }
+            if($forceProtocol === "http"){
+                $url = str_replace('https://','http://',$url);
+            }
+        }
+
+        $result = $this->shariffService->get($url);
 
         $view = View::create($result);
         $view->setFormat('json');
