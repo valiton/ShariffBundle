@@ -23,6 +23,7 @@ class ValitonShariffExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
 
         $container->setParameter('valiton_shariff.shariff_config.domain', $config['domain']);
+        $container->setParameter('valiton_shariff.shariff_config.force_protocol', $config['force_protocol']);
         $container->setParameter('valiton_shariff.shariff_config.cache', $config['cache']);
         $container->setParameter('valiton_shariff.shariff_config.services', $config['services']);
         $container->setParameter('valiton_shariff.shariff_config.client', $config['client']);

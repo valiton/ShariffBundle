@@ -29,6 +29,7 @@ Configure the bundle according to your needs, full config example:
 ```
 valiton_shariff:
     domain: '<your-domain>' 
+    force_protocol: ~ # http or https
     cache:
         cacheDir: '%kernel.cache_dir%'   
         ttl: 3600

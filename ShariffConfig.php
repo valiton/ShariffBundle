@@ -15,6 +15,9 @@ class ShariffConfig
     protected $domain;
 
     /** @var string */
+    protected $force_protocol;
+
+    /** @var string */
     protected $cacheDir;
 
     /** @var int */
@@ -35,9 +38,10 @@ class ShariffConfig
     /** @var array */
     protected $client;
 
-    public function __construct($domain, $services, $cache, $client)
+    public function __construct($domain, $force_protocol, $services, $cache, $client)
     {
         $this->domain = $domain;
+        $this->force_protocol = $force_protocol;
         $this->services = array_keys($services);
         $this->cacheTtl = $cache['ttl'];
         $this->cacheDir = isset($cache['cacheDir']) ? $cache['cacheDir'] : null;
@@ -102,6 +106,22 @@ class ShariffConfig
     }
 
     /**
+     * @return string
+     */
+    public function getForceProtocol()
+    {
+        return $this->force_protocol;
+    }
+
+    /**
+     * @param string $force_protocol
+     */
+    public function setForceProtocol($force_protocol)
+    {
+        $this->force_protocol = $force_protocol;
+    }
+
+    /**
      * @param array $services
      */
     public function setServices($services)
@@ -153,6 +173,7 @@ class ShariffConfig
     {
         $result = array();
         $result['domain'] = $this->domain;
+        $result['force_protocol'] = $this->force_protocol;
         $result['services'] = $this->services;
         $result = array_merge($result, $this->serviceConfig);
 
