@@ -9,9 +9,11 @@
 namespace Valiton\Bundle\ShariffBundle\Twig;
 
 
+use Twig\Extension\AbstractExtension;
+use Twig\Extension\GlobalsInterface;
 use Valiton\Bundle\ShariffBundle\ShariffConfig;
 
-class ShariffExtension extends \Twig_Extension implements \Twig_Extension_GlobalsInterface
+class ShariffExtension extends AbstractExtension implements GlobalsInterface
 {
     protected $shariffConfig;
 
@@ -24,16 +26,6 @@ class ShariffExtension extends \Twig_Extension implements \Twig_Extension_Global
     public function getGlobals()
     {
         return array('shariffConfig' => $this->shariffConfig);
-    }
-
-    /**
-     * Returns the name of the extension.
-     *
-     * @return string The extension name
-     */
-    public function getName()
-    {
-        return 'shariff';
     }
 
 }
