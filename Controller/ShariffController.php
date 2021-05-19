@@ -13,6 +13,7 @@ use FOS\RestBundle\View\View;
 use FOS\RestBundle\View\ViewHandlerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Valiton\Bundle\ShariffBundle\Service\ShariffServiceInterface;
+use Valiton\Bundle\ShariffBundle\ShariffConfig;
 
 class ShariffController
 {
