@@ -1,6 +1,6 @@
-# Shariff Symfony 2 Bundle
+# Shariff Symfony Bundle
 
-This bundle allows to easily integrate [Shariff](https://github.com/heiseonline/shariff-backend-php) with your Symfony 2 application
+This bundle allows to easily integrate [Shariff](https://github.com/heiseonline/shariff-backend-php) with your Symfony application
 
 Installation
 ------------

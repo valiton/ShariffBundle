@@ -48,7 +48,7 @@ class ShariffConfig
         $this->adapter = isset($cache['adapter']) ? $cache['adapter'] : null;
         $this->adapterOptions = isset($cache['adapterOptions']) ? $cache['adapterOptions'] : null;
 
-        foreach($services as $name => $serviceConfig) {
+        foreach ($services as $name => $serviceConfig) {
             if (null !== $serviceConfig) {
                 $this->serviceConfig[$name] = $serviceConfig;
             }

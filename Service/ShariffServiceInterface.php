@@ -9,8 +9,6 @@
 namespace Valiton\Bundle\ShariffBundle\Service;
 
 
-use Valiton\Bundle\ShariffBundle\ShariffConfig;
-
 interface ShariffServiceInterface
 {
     /**

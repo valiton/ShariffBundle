@@ -9,7 +9,7 @@
 namespace Valiton\Bundle\ShariffBundle\Service;
 
 
-use Guzzle\Common\Exception\GuzzleException;
+use GuzzleHttp\Exception\GuzzleException;
 use Heise\Shariff\Backend;
 use Valiton\Bundle\ShariffBundle\ShariffConfig;
 
