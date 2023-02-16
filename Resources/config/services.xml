@@ -27,7 +27,6 @@
         <service id="valiton_shariff.shariff_controller" class="%valiton_shariff.shariff_controller.class%">
             <argument type="service" id="valiton_shariff.shariff_service"/>
             <argument type="service" id="valiton_shariff.shariff_config"/>
-            <argument type="service" id="fos_rest.view_handler"/>
         </service>
 
         <service id="valiton_shariff.shariff_extension" class="%valiton_shariff.shariff_extension.class%">

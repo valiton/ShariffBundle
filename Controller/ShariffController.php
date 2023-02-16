@@ -9,8 +9,7 @@
 namespace Valiton\Bundle\ShariffBundle\Controller;
 
 
-use FOS\RestBundle\View\View;
-use FOS\RestBundle\View\ViewHandlerInterface;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Valiton\Bundle\ShariffBundle\Service\ShariffServiceInterface;
 use Valiton\Bundle\ShariffBundle\ShariffConfig;
@@ -23,16 +22,11 @@ class ShariffController
     /** @var ShariffConfig */
     protected $config;
 
-    /** @var  ViewHandlerInterface */
-    protected $viewHandler;
-
-    public function __construct(ShariffServiceInterface $shariffService, ShariffConfig $config, ViewHandlerInterface $viewHandler)
+    public function __construct(ShariffServiceInterface $shariffService, ShariffConfig $config)
     {
         $this->shariffService = $shariffService;
-        $this->viewHandler = $viewHandler;
         $this->config = $config;
     }
-
 
     public function get(Request $request)
     {
@@ -48,11 +42,6 @@ class ShariffController
             }
         }
 
-        $result = $this->shariffService->get($url);
-
-        $view = View::create($result);
-        $view->setFormat('json');
-
-        return $this->viewHandler->handle($view);
+        return new JsonResponse($this->shariffService->get($url));
     }
 }
